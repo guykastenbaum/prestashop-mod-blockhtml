@@ -2,10 +2,16 @@
 
 class BlockHTML extends Module
 {
+/* example, in index.tpl : 
+		{hook h='displayHome' mod='blockhtml' blonk="info"}
+		<hr/>
+		{hook h='displayHome' mod='blockhtml' blonk="presse"}
+*/
 	private $blohks=array(
 		"top"=>array("css"=>"top","hook"=>"top","blonks"=>array()),
-		"home"=>array("css"=>"home","hook"=>"displayHome","blonks"=>array("infos")),
-		"footer"=>array("css"=>"footer","hook"=>"displayFooter","blonks"=>array("presse")),
+		"home"=>array("css"=>"home","hook"=>"displayHome","blonks"=>array(
+			"info","press1","press2","press3","press4")),
+		"footer"=>array("css"=>"footer","hook"=>"displayFooter","blonks"=>array()),
 		"left"=>array("css"=>"left","hook"=>"leftColumn","blonks"=>array()),
 		"right"=>array("css"=>"right","hook"=>"rightColumn","blonks"=>array()),
 	);
@@ -46,13 +52,14 @@ class BlockHTML extends Module
 		global $cookie, $smarty;
 		$bloktt=array();
 		foreach($blohk["blonks"] as $blonk)
-			if ($xml->{$blohk["css"].$blonk.'_'.$cookie->id_lang})
-				$bloktt[]=array(
-				'idcss' => $blohk["css"].$blonk,
-				'idcsslang' => $blohk["css"].$blonk.'_'.$cookie->id_lang,
-				'text' => $xml->{$blohk["css"].$blonk.'_'.$cookie->id_lang},
-				'this_path' => $this->_path
-				);
+			if((!isset($params["blonk"])) or ($params["blonk"] == $blonk) )
+				if ($xml->{$blohk["css"].$blonk.'_'.$cookie->id_lang})
+					$bloktt[]=array(
+					'idcss' => $blohk["css"].$blonk,
+					'idcsslang' => $blohk["css"].$blonk.'_'.$cookie->id_lang,
+					'text' => $xml->{$blohk["css"].$blonk.'_'.$cookie->id_lang},
+					'this_path' => $this->_path
+					);
 		$smarty->assign(array('blockhtml' => $bloktt));
 		return $this->display(__FILE__, 'blockhtml.tpl');
 	}
