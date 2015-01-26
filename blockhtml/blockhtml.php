@@ -19,7 +19,7 @@ class BlockHTML extends Module
 	{
 		$this->name = 'blockhtml';
 		$this->tab = 'Blocks';
-		$this->version = '0.1';
+		$this->version = '0.2';
 
 		parent::__construct(); // The parent construct is required for translations
 
@@ -136,8 +136,9 @@ class BlockHTML extends Module
 					tinyMCE.init({
 						mode : "textareas",
 						theme : "advanced",
-						plugins : "safari,pagebreak,style,layer,table,advimage,advlink,inlinepopups,media,searchreplace,contextmenu,paste,directionality,fullscreen",
-						// Theme options
+						plugins : "style,layer,table,image,advimage,advlink,inlinepopups,media,searchreplace,contextmenu,paste,fullscreen,code,colorpicker",
+						//unused plugins : "safari,pagebreak,style,layer,table,image,advimage,advlink,inlinepopups,media,searchreplace,contextmenu,paste,directionality,fullscreen,code",
+						// Theme options (useless?)
 						theme_advanced_buttons1 : "newdocument,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,styleselect,formatselect,fontselect,fontsizeselect",
 						theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,,|,forecolor,backcolor",
 						theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,media,|,ltr,rtl,|,fullscreen",
