@@ -19,7 +19,7 @@ class BlockHTML extends Module
 	{
 		$this->name = 'blockhtml';
 		$this->tab = 'Blocks';
-		$this->version = '0.2';
+		$this->version = '0.3';
 
 		parent::__construct(); // The parent construct is required for translations
 
