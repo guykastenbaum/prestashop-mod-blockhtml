@@ -160,6 +160,7 @@ class BlockHTML extends Module
 						elements : "nourlconvert",
 						entity_encoding: "raw",
 						convert_urls : false,
+						valid_elements:"*[*]",
 						language : "'.(file_exists(_PS_ROOT_DIR_.'/js/tinymce/jscripts/tiny_mce/langs/'.$iso.'.js') ? $iso : 'en').'"
 						
 					});
