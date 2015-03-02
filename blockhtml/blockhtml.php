@@ -11,7 +11,7 @@ class BlockHTML extends Module
 		"top"=>array("css"=>"top","hook"=>"top","blonks"=>array()),
 		"home"=>array("css"=>"home","hook"=>"displayHome","blonks"=>array(
 			"info","press1","press2","press3","press4")),
-		"footer"=>array("css"=>"footer","hook"=>"displayFooter","blonks"=>array()),
+		"footer"=>array("css"=>"footer","hook"=>"displayFooter","blonks"=>array("lieu","horaires","footer")),
 		"left"=>array("css"=>"left","hook"=>"leftColumn","blonks"=>array()),
 		"right"=>array("css"=>"right","hook"=>"rightColumn","blonks"=>array()),
 	);
@@ -190,10 +190,9 @@ class BlockHTML extends Module
 							($xml ? stripslashes(htmlspecialchars($xml->{$blohkid})) : '').'</textarea>
 						</div>';
 				}
-				$this->_html .= 
-					$this->displayFlags($languages, $defaultLanguage, $divLangName, 'text_'.$blohk.$blonk, true).'
+				$this->_html .= '</div>'.$this->displayFlags($languages, $defaultLanguage, 'text_'.$blohk.$blonk, 'text_'.$blohk.$blonk, true).'
 					<p class="clear">'.$this->l('Text of your choice').'</p>
-				</div>';
+				';
 			}
 		}
 			
